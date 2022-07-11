@@ -1,0 +1,12 @@
+---
+spring:
+  config.activate.on-profile: default
+cds:
+  datasource:
+    auto-config.enabled: false
+  remote.services: 
+    CommTableService:
+       destination:
+            type: "odata-v2"
+    
+      

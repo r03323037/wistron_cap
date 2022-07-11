@@ -27,8 +27,4 @@ hs_err*
 .idea
 
 # auto generated wildcard
-vcf/zvcfapi_application_log/db/.env
-# auto generated wildcard
-vcf/zvcf_workflow_config/db/.env
-# auto generated wildcard
 vcf/zvcfapi_config_tables/db/.env

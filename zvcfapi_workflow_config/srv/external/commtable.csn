@@ -1,0 +1,4331 @@
+{
+  "meta": {
+    "creator": "cds-dk 4.8.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "commtable.Proxies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "uuid": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "employee_id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 11
+        },
+        "proxy_id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 11
+        },
+        "valid_from": {
+          "type": "cds.Date"
+        },
+        "valid_to": {
+          "type": "cds.Date"
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.Proxies",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.Proxies"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.Proxies"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.Proxies"
+          }
+        }
+      }
+    },
+    "commtable.HrDatas": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pkid": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "batchid": {
+          "type": "cds.String",
+          "length": 17
+        },
+        "bu": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "bg": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "site": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "plant": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "location": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "emplid": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "name_a": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "hire_dt": {
+          "type": "cds.Timestamp",
+          "@odata.precision": 7,
+          "@odata.type": "Edm.DateTimeOffset"
+        },
+        "sal_location_a": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "company": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "deptid": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "jobtitle_descr": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "emailid": {
+          "type": "cds.String",
+          "length": 70
+        },
+        "email_address_a": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "phone_a": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "officer_level_a": {
+          "type": "cds.Decimal",
+          "precision": 2
+        },
+        "supervisor_id": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "tree_level_num": {
+          "type": "cds.Decimal",
+          "precision": 2
+        },
+        "termination_dt": {
+          "type": "cds.Date"
+        },
+        "labor_type": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "job_family": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "last_updt_dt": {
+          "type": "cds.Timestamp",
+          "@odata.precision": 7,
+          "@odata.type": "Edm.DateTimeOffset"
+        }
+      }
+    },
+    "commtable.NumberRanages": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "object_name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 30
+        },
+        "subobject_value": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6
+        },
+        "sequence": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "year_to": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "number_from": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "number_to": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "number_level": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "external": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.NumberRanages",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.NumberRanages"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.NumberRanages"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.NumberRanages"
+          }
+        }
+      }
+    },
+    "commtable.Companies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "company": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "company_name": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "city": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "currency": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "language": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.Companies",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.Companies"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.Companies"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.Companies"
+          }
+        }
+      }
+    },
+    "commtable.PurchaseOrgs": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "purchase_org": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.PurchaseOrgs",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.PurchaseOrgs"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.PurchaseOrgs"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.PurchaseOrgs"
+          }
+        }
+      }
+    },
+    "commtable.VendorsGeneral": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "MANDT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "LIFNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "LAND1": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "NAME1": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "NAME2": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "NAME3": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "NAME4": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "ORT01": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "ORT02": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PFACH": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PSTL2": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PSTLZ": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "REGIO": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "SORTL": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "STRAS": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "ADRNR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "MCOD1": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "MCOD2": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "MCOD3": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "ANRED": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "BAHNS": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "BBBNR": {
+          "type": "cds.Integer"
+        },
+        "BBSNR": {
+          "type": "cds.Integer"
+        },
+        "BEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "BRSCH": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "BUBKZ": {
+          "type": "cds.Integer"
+        },
+        "DATLT": {
+          "type": "cds.String",
+          "length": 14
+        },
+        "DTAMS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DTAWS": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ERDAT": {
+          "type": "cds.Date"
+        },
+        "ERNAM": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "ESRNR": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "KONZS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KTOKK": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KUNNR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LNRZA": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LOEVM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SPERR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SPERM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SPRAS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "STCD1": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "STCD2": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "STKZA": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "STKZU": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TELBX": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "TELF1": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "TELF2": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "TELFX": {
+          "type": "cds.String",
+          "length": 31
+        },
+        "TELTX": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "TELX1": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "XCPDK": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "XZEMP": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "VBUND": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "FISKN": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "STCEG": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "STKZN": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SPERQ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "GBORT": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "GBDAT": {
+          "type": "cds.Date"
+        },
+        "SEXKZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KRAUS": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "REVDB": {
+          "type": "cds.Date"
+        },
+        "QSSYS": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KTOCK": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "PFORT": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "WERKS": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "LTSNA": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "WERKR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PLKAL": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "DUEFL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TXJCD": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "SPERZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SCACD": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "SFRGR": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "LZONE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "XLFZA": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DLGRP": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "FITYP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "STCDT": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "REGSS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ACTSS": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "STCD3": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "STCD4": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "STCD5": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "IPISP": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TAXBS": {
+          "type": "cds.Integer"
+        },
+        "PROFS": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "STGDL": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "EMNFR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LFURL": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "J_1KFREPRE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "J_1KFTBUS": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "J_1KFTIND": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "CONFS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "UPDAT": {
+          "type": "cds.Date"
+        },
+        "UPTIM": {
+          "type": "cds.Time"
+        },
+        "NODEL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "QSSYSDAT": {
+          "type": "cds.Date"
+        },
+        "PODKZB": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "FISKU": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "STENR": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "CARRIER_CONF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "MIN_COMP": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TERM_LI": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CRC_NUM": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "CVP_XBLCK": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "RG": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "EXP": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "UF": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "RGDATE": {
+          "type": "cds.Date"
+        },
+        "RIC": {
+          "type": "cds.Integer"
+        },
+        "RNE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "RNEDATE": {
+          "type": "cds.Date"
+        },
+        "CNAE": {
+          "type": "cds.String",
+          "length": 7
+        },
+        "LEGALNAT": {
+          "type": "cds.Integer"
+        },
+        "CRTN": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ICMSTAXPAY": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "INDTYP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "TDT": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "COMSIZE": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "DECREGPC": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "J_SC_CAPITAL": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "J_SC_CURRENCY": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "ALC": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "PMT_OFFICE": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "PSOFG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PSOIS": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "PSON1": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSON2": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSON3": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSOVN": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSOTL": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "PSOHS": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "PSOST": {
+          "type": "cds.String",
+          "length": 28
+        },
+        "TRANSPORT_CHAIN": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "STAGING_TIME": {
+          "type": "cds.Integer"
+        },
+        "SCHEDULING_TYPE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SUBMI_RELEVANT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.VendorsGeneral",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorsGeneral"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.VendorsGeneral"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorsGeneral"
+          }
+        }
+      }
+    },
+    "commtable.VendorsCompany": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "MANDT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "LIFNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "BUKRS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PERNR": {
+          "type": "cds.Integer"
+        },
+        "ERDAT": {
+          "type": "cds.Date"
+        },
+        "ERNAM": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "SPERR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LOEVM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZUAWA": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "AKONT": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VZSKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ZWELS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "XVERR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZAHLS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZTERM": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "EIKTO": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "ZSABE": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "KVERM": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "FDGRV": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BUSAB": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "LNRZE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LNRZB": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZINDT": {
+          "type": "cds.Date"
+        },
+        "ZINRT": {
+          "type": "cds.Integer"
+        },
+        "DATLZ": {
+          "type": "cds.Date"
+        },
+        "XDEZV": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "WEBTR": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "KULTG": {
+          "type": "cds.Integer"
+        },
+        "REPRF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TOGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "HBKID": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "XPORE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "QSZNR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "QSZDT": {
+          "type": "cds.Date"
+        },
+        "QSSKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "BLNKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "MINDK": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "ALTKN": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZGRUP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "MGRUP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "UZAWE": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "QSREC": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "QSBGR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "QLAND": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "XEDIP": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "FRGRP": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "TOGRR": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "TLFXS": {
+          "type": "cds.String",
+          "length": 31
+        },
+        "INTAD": {
+          "type": "cds.String",
+          "length": 130
+        },
+        "XLFZB": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "GUZTE": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "GRICD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "GRIDT": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "XAUSZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CERDT": {
+          "type": "cds.Date"
+        },
+        "CONFS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "UPDAT": {
+          "type": "cds.Date"
+        },
+        "UPTIM": {
+          "type": "cds.Time"
+        },
+        "NODEL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TLFNS": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "AVSND": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "AD_HASH": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "CVP_XBLCK_B": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CIIUCODE": {
+          "type": "cds.Integer"
+        },
+        "J_SC_SUBCONTYPE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "J_SC_COMPDATE": {
+          "type": "cds.Integer"
+        },
+        "J_SC_OFFSM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "J_SC_OFFSR": {
+          "type": "cds.Integer"
+        },
+        "BASIS_PNT": {
+          "type": "cds.Decimal",
+          "precision": 6,
+          "scale": 3
+        },
+        "GMVKZK": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PREPAY_RELEVANT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ASSIGN_TEST": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.VendorsCompany",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorsCompany"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.VendorsCompany"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorsCompany"
+          }
+        }
+      }
+    },
+    "commtable.VendorsPurchase": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "MANDT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "LIFNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "EKORG": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "ERDAT": {
+          "type": "cds.Date"
+        },
+        "ERNAM": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "SPERM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LOEVM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LFABC": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "WAERS": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "VERKF": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "TELF1": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "MINBW": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ZTERM": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "INCO1": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "INCO2": {
+          "type": "cds.String",
+          "length": 28
+        },
+        "WEBRE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KZABS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KALSK": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KZAUT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "EXPVZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZOLLA": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "MEPRF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "EKGRP": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "XERSY": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PLIFZ": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "MRPPP": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "LFRHY": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "LIBES": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LIPRE": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "LISER": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRFRE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "NRGEW": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BOIND": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BLIND": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KZRET": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SKRIT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BSTAE": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "RDPRF": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "MEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VENSL": {
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 1
+        },
+        "BOPNR": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "XERSR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "EIKTO": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "ABUEB": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "PAPRF": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "AGREL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "XNBWY": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "VSBED": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "LEBRE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BOLRE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "UMSAE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "VENDOR_RMA_REQ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ACTIVITY_PROFIL": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "TRANSPORT_CHAIN": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "STAGING_TIME": {
+          "type": "cds.Integer"
+        },
+        "ZZECVR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZZVCFM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZZCSUM": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZZBRND": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZZDUNS": {
+          "type": "cds.String",
+          "length": 9
+        },
+        "ZZMWSKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.VendorsPurchase",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorsPurchase"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.VendorsPurchase"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorsPurchase"
+          }
+        }
+      }
+    },
+    "commtable.CustomersGeneral": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "MANDT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "KUNNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "LAND1": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "NAME1": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "NAME2": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "ORT01": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSTLZ": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "REGIO": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "SORTL": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "STRAS": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "TELF1": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "TELFX": {
+          "type": "cds.String",
+          "length": 31
+        },
+        "XCPDK": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ADRNR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "MCOD1": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "MCOD2": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "MCOD3": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "ANRED": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "AUFSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "BAHNE": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "BAHNS": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "BBBNR": {
+          "type": "cds.Integer"
+        },
+        "BBSNR": {
+          "type": "cds.Integer"
+        },
+        "BEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "BRSCH": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "BUBKZ": {
+          "type": "cds.Integer"
+        },
+        "DATLT": {
+          "type": "cds.String",
+          "length": 14
+        },
+        "ERDAT": {
+          "type": "cds.Date"
+        },
+        "ERNAM": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "EXABL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "FAKSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "FISKN": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KNAZK": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KNRZA": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KONZS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KTOKD": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KUKLA": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "LIFNR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LIFSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "LOCCO": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LOEVM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "NAME3": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "NAME4": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "NIELS": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ORT02": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PFACH": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PSTL2": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "COUNC": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CITYC": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "RPMKR": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "SPERR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SPRAS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "STCD1": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "STCD2": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "STKZA": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "STKZU": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TELBX": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "TELF2": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "TELTX": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "TELX1": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "LZONE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "XZEMP": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "VBUND": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "STCEG": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "DEAR1": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DEAR2": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DEAR3": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DEAR4": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DEAR5": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "GFORM": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "BRAN1": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BRAN2": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BRAN3": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BRAN4": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BRAN5": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "EKONT": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "UMSAT": {
+          "type": "cds.Decimal",
+          "precision": 8,
+          "scale": 2
+        },
+        "UMJAH": {
+          "type": "cds.Integer"
+        },
+        "UWAER": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "JMZAH": {
+          "type": "cds.Integer"
+        },
+        "JMJAH": {
+          "type": "cds.Integer"
+        },
+        "KATR1": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KATR2": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KATR3": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KATR4": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KATR5": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KATR6": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KATR7": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KATR8": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KATR9": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KATR10": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "STKZN": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "UMSA1": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "TXJCD": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "PERIV": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ABRVW": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "INSPBYDEBI": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "INSPATDEBI": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KTOCD": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "PFORT": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "WERKS": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "DTAMS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DTAWS": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "DUEFL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "HZUOR": {
+          "type": "cds.Integer"
+        },
+        "SPERZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ETIKG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "CIVVE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "MILVE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KDKG1": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KDKG2": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KDKG3": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KDKG4": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KDKG5": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "XKNZA": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "FITYP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "STCDT": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "STCD3": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "STCD4": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "STCD5": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "XICMS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "XXIPI": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "XSUBT": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CFOPC": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "TXLW1": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "TXLW2": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CCC01": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CCC02": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CCC03": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CCC04": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CASSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KNURL": {
+          "type": "cds.String",
+          "length": 132
+        },
+        "J_1KFREPRE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "J_1KFTBUS": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "J_1KFTIND": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "CONFS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "UPDAT": {
+          "type": "cds.Date"
+        },
+        "UPTIM": {
+          "type": "cds.Time"
+        },
+        "NODEL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "DEAR6": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CVP_XBLCK": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "SUFRAMA": {
+          "type": "cds.String",
+          "length": 9
+        },
+        "RG": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "EXP": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "UF": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "RGDATE": {
+          "type": "cds.Date"
+        },
+        "RIC": {
+          "type": "cds.Integer"
+        },
+        "RNE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "RNEDATE": {
+          "type": "cds.Date"
+        },
+        "CNAE": {
+          "type": "cds.String",
+          "length": 7
+        },
+        "LEGALNAT": {
+          "type": "cds.Integer"
+        },
+        "CRTN": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ICMSTAXPAY": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "INDTYP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "TDT": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "COMSIZE": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "DECREGPC": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "_VSO_R_PALHGT": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "_VSO_R_PAL_UL": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "_VSO_R_PK_MAT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "_VSO_R_MATPAL": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "_VSO_R_I_NO_LYR": {
+          "type": "cds.Integer"
+        },
+        "_VSO_R_ONE_MAT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "_VSO_R_ONE_SORT": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "_VSO_R_ULD_SIDE": {
+          "type": "cds.Integer"
+        },
+        "_VSO_R_LOAD_PREF": {
+          "type": "cds.Integer"
+        },
+        "_VSO_R_DPOINT": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ALC": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "PMT_OFFICE": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "PSOFG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PSOIS": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "PSON1": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSON2": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSON3": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSOVN": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "PSOTL": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "PSOHS": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "PSOST": {
+          "type": "cds.String",
+          "length": 28
+        },
+        "PSOO1": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "PSOO2": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "PSOO3": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "PSOO4": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "PSOO5": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.CustomersGeneral",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.CustomersGeneral"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.CustomersGeneral"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.CustomersGeneral"
+          }
+        }
+      }
+    },
+    "commtable.CustomersCompany": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "MANDT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "KUNNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "BUKRS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PERNR": {
+          "type": "cds.Integer"
+        },
+        "ERDAT": {
+          "type": "cds.Date"
+        },
+        "ERNAM": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "SPERR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LOEVM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZUAWA": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "BUSAB": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "AKONT": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KNRZE": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KNRZB": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZAMIM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZAMIV": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZAMIR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZAMIB": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZAMIO": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZWELS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "XVERR": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZAHLS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZTERM": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "WAKON": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VZSKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ZINDT": {
+          "type": "cds.Date"
+        },
+        "ZINRT": {
+          "type": "cds.Integer"
+        },
+        "EIKTO": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "ZSABE": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "KVERM": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "FDGRV": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "VRBKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "VLIBB": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "VRSZL": {
+          "type": "cds.Integer"
+        },
+        "VRSPR": {
+          "type": "cds.Integer"
+        },
+        "VRSNR": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "VERDT": {
+          "type": "cds.Date"
+        },
+        "PERKZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "XDEZV": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "XAUSZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "WEBTR": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "REMIT": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "DATLZ": {
+          "type": "cds.Date"
+        },
+        "XZVER": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TOGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KULTG": {
+          "type": "cds.Integer"
+        },
+        "HBKID": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "XPORE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BLNKZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ALTKN": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZGRUP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "URLID": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "MGRUP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "LOCKB": {
+          "type": "cds.String",
+          "length": 7
+        },
+        "UZAWE": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "EKVBD": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "SREGL": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "XEDIP": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "FRGRP": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VRSDG": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "TLFXS": {
+          "type": "cds.String",
+          "length": 31
+        },
+        "INTAD": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "XKNZB": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "GUZTE": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "GRICD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "GRIDT": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "WBRSL": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "CONFS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "UPDAT": {
+          "type": "cds.Date"
+        },
+        "UPTIM": {
+          "type": "cds.Time"
+        },
+        "NODEL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "TLFNS": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "CESSION_KZ": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "AVSND": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "AD_HASH": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "QLAND": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CVP_XBLCK_B": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CIIUCODE": {
+          "type": "cds.Integer"
+        },
+        "GMVKZD": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.CustomersCompany",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.CustomersCompany"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.CustomersCompany"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.CustomersCompany"
+          }
+        }
+      }
+    },
+    "commtable.CustomersSales": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "MANDT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "KUNNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "VKORG": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "VTWEG": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "SPART": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "ERNAM": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "ERDAT": {
+          "type": "cds.Date"
+        },
+        "BEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "LOEVM": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "VERSG": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "AUFSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KALKS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KDGRP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "BZIRK": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "KONDA": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "PLTYP": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "AWAHR": {
+          "type": "cds.Integer"
+        },
+        "INCO1": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "INCO2": {
+          "type": "cds.String",
+          "length": 28
+        },
+        "LIFSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "AUTLF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ANTLF": {
+          "type": "cds.Integer"
+        },
+        "KZTLF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KZAZU": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CHSPL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LPRIO": {
+          "type": "cds.Integer"
+        },
+        "EIKTO": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "VSBED": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "FAKSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "MRNKZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PERFK": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "PERRL": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KVAKZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KVAWT": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "WAERS": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "KLABC": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "KTGRD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "ZTERM": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VWERK": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VKGRP": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "VKBUR": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "VSORT": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KVGR1": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KVGR2": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KVGR3": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KVGR4": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "KVGR5": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "BOKRE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "BOIDT": {
+          "type": "cds.Date"
+        },
+        "KURST": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "PRFRE": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT1": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT2": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT3": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT4": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT5": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT6": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT7": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT8": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRAT9": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRATA": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KABSS": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KKBER": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "CASSD": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "RDOFF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "AGREL": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "MEGRU": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "UEBTO": {
+          "type": "cds.Decimal",
+          "precision": 3,
+          "scale": 1
+        },
+        "UNTTO": {
+          "type": "cds.Decimal",
+          "precision": 3,
+          "scale": 1
+        },
+        "UEBTK": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PVKSM": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "PODKZ": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "PODTG": {
+          "type": "cds.Integer"
+        },
+        "BLIND": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CARRIER_NOTIF": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "CVP_XBLCK_V": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "_BEV1_EMLGPFAND": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "_BEV1_EMLGFORTS": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.CustomersSales",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.CustomersSales"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.CustomersSales"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.CustomersSales"
+          }
+        }
+      }
+    },
+    "commtable.VendorAccoutGroups": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "vendor_account_group": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "number_range": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "one_time": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "sub_range_relevant": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "plant_level_relevant": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "partner_schema": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "default_customer_account_group": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.VendorAccoutGroups",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorAccoutGroups"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.VendorAccoutGroups"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.VendorAccoutGroups"
+          }
+        }
+      }
+    },
+    "commtable.SuuplyTypes": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "supply_type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "category": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.SuuplyTypes",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.SuuplyTypes"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.SuuplyTypes"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.SuuplyTypes"
+          }
+        }
+      }
+    },
+    "commtable.PaymentTerms": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "payment_term_key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "attribute": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "baseline_date": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "payment_type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "payment_date_type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 30
+        },
+        "payment_period": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "remark1": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "payment_date1": {
+          "type": "cds.Integer"
+        },
+        "payment_date2": {
+          "type": "cds.Integer"
+        },
+        "payment_date3": {
+          "type": "cds.Integer"
+        },
+        "payment_term": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.PaymentTerms",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.PaymentTerms"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.PaymentTerms"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.PaymentTerms"
+          }
+        }
+      }
+    },
+    "commtable.PRType": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "pr_type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.PRType",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.PRType"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.PRType"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.PRType"
+          }
+        }
+      }
+    },
+    "commtable.CountryKeys": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "country_key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "currency": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "language": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "nationality": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.CountryKeys",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.CountryKeys"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.CountryKeys"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.CountryKeys"
+          }
+        }
+      }
+    },
+    "commtable.LanguageKeys": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "language_key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "discription": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.LanguageKeys",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.LanguageKeys"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.LanguageKeys"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.LanguageKeys"
+          }
+        }
+      }
+    },
+    "commtable.Regions": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "country": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "region": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.Regions",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.Regions"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.Regions"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.Regions"
+          }
+        }
+      }
+    },
+    "commtable.Currencies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "currency": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.Currencies",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.Currencies"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.Currencies"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.Currencies"
+          }
+        }
+      }
+    },
+    "commtable.PaymentMethods": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "payment_method": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.PaymentMethods",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.PaymentMethods"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.PaymentMethods"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.PaymentMethods"
+          }
+        }
+      }
+    },
+    "commtable.ReconAccounts": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "recon_account": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.ReconAccounts",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.ReconAccounts"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.ReconAccounts"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.ReconAccounts"
+          }
+        }
+      }
+    },
+    "commtable.IncoTerm1s": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "inco_term1": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.IncoTerm1s",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.IncoTerm1s"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.IncoTerm1s"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.IncoTerm1s"
+          }
+        }
+      }
+    },
+    "commtable.IncoTerm2s": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "inco_term1": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.IncoTerm2s",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.IncoTerm2s"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.IncoTerm2s"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.IncoTerm2s"
+          }
+        }
+      }
+    },
+    "commtable.TaxCodes": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "tax_code": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "IsActiveEntity": {
+          "key": true,
+          "type": "cds.Boolean"
+        },
+        "HasActiveEntity": {
+          "type": "cds.Boolean"
+        },
+        "HasDraftEntity": {
+          "type": "cds.Boolean"
+        },
+        "DraftAdministrativeData": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.DraftAdministrativeData",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        },
+        "SiblingEntity": {
+          "type": "cds.Association",
+          "@cds.ambiguous": "missing on condition?",
+          "target": "commtable.TaxCodes",
+          "cardinality": {
+            "max": 1
+          },
+          "keys": []
+        }
+      },
+      "actions": {
+        "draftPrepare": {
+          "kind": "action",
+          "params": {
+            "SideEffectsQualifier": {
+              "type": "cds.LargeString"
+            }
+          },
+          "returns": {
+            "type": "commtable.TaxCodes"
+          }
+        },
+        "draftActivate": {
+          "kind": "action",
+          "returns": {
+            "type": "commtable.TaxCodes"
+          }
+        },
+        "draftEdit": {
+          "kind": "action",
+          "params": {
+            "PreserveChanges": {
+              "type": "cds.Boolean"
+            }
+          },
+          "returns": {
+            "type": "commtable.TaxCodes"
+          }
+        }
+      }
+    },
+    "commtable.DraftAdministrativeData": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DraftUUID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "CreationDateTime": {
+          "type": "cds.Timestamp",
+          "@odata.precision": 7,
+          "@odata.type": "Edm.DateTimeOffset"
+        },
+        "CreatedByUser": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "DraftIsCreatedByMe": {
+          "type": "cds.Boolean"
+        },
+        "LastChangeDateTime": {
+          "type": "cds.Timestamp",
+          "@odata.precision": 7,
+          "@odata.type": "Edm.DateTimeOffset"
+        },
+        "LastChangedByUser": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "InProcessByUser": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "DraftIsProcessedByMe": {
+          "type": "cds.Boolean"
+        }
+      }
+    },
+    "commtable": {
+      "kind": "service",
+      "@cds.external": true
+    }
+  }
+}
