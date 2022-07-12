@@ -27,64 +27,6 @@
         },
         "valid_to": {
           "type": "cds.Date"
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.Proxies",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.Proxies"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.Proxies"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.Proxies"
-          }
         }
       }
     },
@@ -195,6 +137,106 @@
         }
       }
     },
+    "commtable.HrEmployee": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ENO": {
+          "key": true,
+          "type": "cds.String",
+          "length": 11
+        },
+        "ECNAME": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "EENAME": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "DEPTNO": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "EMAIL": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "TELNO": {
+          "type": "cds.String",
+          "length": 15
+        },
+        "BOSS": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "LOCATION": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BOSSLEVELNO": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "LEVELNO": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "commtable.HrDepartment": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DEPTCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "DEPTNAME": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "MANAGER": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "DVCODE": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "COMPANY": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "LOCATION": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LEVELNO": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "commtable.HrDepartCoHead": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DEPTCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "MANAGER": {
+          "type": "cds.String",
+          "length": 11
+        },
+        "SEQ_NO": {
+          "type": "cds.Integer"
+        }
+      }
+    },
     "commtable.NumberRanages": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -233,64 +275,6 @@
         "external": {
           "type": "cds.String",
           "length": 1
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.NumberRanages",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.NumberRanages"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.NumberRanages"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.NumberRanages"
-          }
         }
       }
     },
@@ -322,64 +306,6 @@
         "language": {
           "type": "cds.String",
           "length": 2
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.Companies",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.Companies"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.Companies"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.Companies"
-          }
         }
       }
     },
@@ -396,63 +322,9 @@
           "type": "cds.String",
           "length": 20
         },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.PurchaseOrgs",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.PurchaseOrgs"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.PurchaseOrgs"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.PurchaseOrgs"
-          }
+        "country_key": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -999,64 +871,6 @@
         "SUBMI_RELEVANT": {
           "type": "cds.String",
           "length": 1
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.VendorsGeneral",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorsGeneral"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.VendorsGeneral"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorsGeneral"
-          }
         }
       }
     },
@@ -1347,64 +1161,6 @@
         "ASSIGN_TEST": {
           "type": "cds.String",
           "length": 4
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.VendorsCompany",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorsCompany"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.VendorsCompany"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorsCompany"
-          }
         }
       }
     },
@@ -1658,64 +1414,6 @@
         "ZZMWSKZ": {
           "type": "cds.String",
           "length": 2
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.VendorsPurchase",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorsPurchase"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.VendorsPurchase"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorsPurchase"
-          }
         }
       }
     },
@@ -2442,64 +2140,6 @@
         "PSOO5": {
           "type": "cds.String",
           "length": 50
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.CustomersGeneral",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.CustomersGeneral"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.CustomersGeneral"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.CustomersGeneral"
-          }
         }
       }
     },
@@ -2815,64 +2455,6 @@
         "GMVKZD": {
           "type": "cds.String",
           "length": 1
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.CustomersCompany",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.CustomersCompany"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.CustomersCompany"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.CustomersCompany"
-          }
         }
       }
     },
@@ -3193,64 +2775,6 @@
         "_BEV1_EMLGFORTS": {
           "type": "cds.String",
           "length": 1
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.CustomersSales",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.CustomersSales"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.CustomersSales"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.CustomersSales"
-          }
         }
       }
     },
@@ -3290,64 +2814,6 @@
         "default_customer_account_group": {
           "type": "cds.String",
           "length": 4
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.VendorAccoutGroups",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorAccoutGroups"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.VendorAccoutGroups"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.VendorAccoutGroups"
-          }
         }
       }
     },
@@ -3367,64 +2833,6 @@
         "description": {
           "type": "cds.String",
           "length": 40
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.SuuplyTypes",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.SuuplyTypes"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.SuuplyTypes"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.SuuplyTypes"
-          }
         }
       }
     },
@@ -3477,64 +2885,6 @@
         "payment_term": {
           "type": "cds.String",
           "length": 1
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.PaymentTerms",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.PaymentTerms"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.PaymentTerms"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.PaymentTerms"
-          }
         }
       }
     },
@@ -3550,64 +2900,6 @@
         "description": {
           "type": "cds.String",
           "length": 80
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.PRType",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.PRType"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.PRType"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.PRType"
-          }
         }
       }
     },
@@ -3635,64 +2927,6 @@
         "nationality": {
           "type": "cds.String",
           "length": 15
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.CountryKeys",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.CountryKeys"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.CountryKeys"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.CountryKeys"
-          }
         }
       }
     },
@@ -3708,64 +2942,6 @@
         "discription": {
           "type": "cds.String",
           "length": 16
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.LanguageKeys",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.LanguageKeys"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.LanguageKeys"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.LanguageKeys"
-          }
         }
       }
     },
@@ -3786,64 +2962,6 @@
         "description": {
           "type": "cds.String",
           "length": 20
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.Regions",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.Regions"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.Regions"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.Regions"
-          }
         }
       }
     },
@@ -3859,64 +2977,6 @@
         "description": {
           "type": "cds.String",
           "length": 40
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.Currencies",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.Currencies"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.Currencies"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.Currencies"
-          }
         }
       }
     },
@@ -3932,64 +2992,6 @@
         "description": {
           "type": "cds.String",
           "length": 30
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.PaymentMethods",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.PaymentMethods"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.PaymentMethods"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.PaymentMethods"
-          }
         }
       }
     },
@@ -4005,64 +3007,6 @@
         "description": {
           "type": "cds.String",
           "length": 50
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.ReconAccounts",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.ReconAccounts"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.ReconAccounts"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.ReconAccounts"
-          }
         }
       }
     },
@@ -4078,64 +3022,6 @@
         "description": {
           "type": "cds.String",
           "length": 30
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.IncoTerm1s",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.IncoTerm1s"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.IncoTerm1s"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.IncoTerm1s"
-          }
         }
       }
     },
@@ -4151,64 +3037,6 @@
         "description": {
           "type": "cds.String",
           "length": 50
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.IncoTerm2s",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.IncoTerm2s"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.IncoTerm2s"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.IncoTerm2s"
-          }
         }
       }
     },
@@ -4224,102 +3052,6 @@
         "description": {
           "type": "cds.String",
           "length": 50
-        },
-        "IsActiveEntity": {
-          "key": true,
-          "type": "cds.Boolean"
-        },
-        "HasActiveEntity": {
-          "type": "cds.Boolean"
-        },
-        "HasDraftEntity": {
-          "type": "cds.Boolean"
-        },
-        "DraftAdministrativeData": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.DraftAdministrativeData",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        },
-        "SiblingEntity": {
-          "type": "cds.Association",
-          "@cds.ambiguous": "missing on condition?",
-          "target": "commtable.TaxCodes",
-          "cardinality": {
-            "max": 1
-          },
-          "keys": []
-        }
-      },
-      "actions": {
-        "draftPrepare": {
-          "kind": "action",
-          "params": {
-            "SideEffectsQualifier": {
-              "type": "cds.LargeString"
-            }
-          },
-          "returns": {
-            "type": "commtable.TaxCodes"
-          }
-        },
-        "draftActivate": {
-          "kind": "action",
-          "returns": {
-            "type": "commtable.TaxCodes"
-          }
-        },
-        "draftEdit": {
-          "kind": "action",
-          "params": {
-            "PreserveChanges": {
-              "type": "cds.Boolean"
-            }
-          },
-          "returns": {
-            "type": "commtable.TaxCodes"
-          }
-        }
-      }
-    },
-    "commtable.DraftAdministrativeData": {
-      "kind": "entity",
-      "@cds.persistence.skip": true,
-      "elements": {
-        "DraftUUID": {
-          "key": true,
-          "type": "cds.UUID"
-        },
-        "CreationDateTime": {
-          "type": "cds.Timestamp",
-          "@odata.precision": 7,
-          "@odata.type": "Edm.DateTimeOffset"
-        },
-        "CreatedByUser": {
-          "type": "cds.String",
-          "length": 256
-        },
-        "DraftIsCreatedByMe": {
-          "type": "cds.Boolean"
-        },
-        "LastChangeDateTime": {
-          "type": "cds.Timestamp",
-          "@odata.precision": 7,
-          "@odata.type": "Edm.DateTimeOffset"
-        },
-        "LastChangedByUser": {
-          "type": "cds.String",
-          "length": 256
-        },
-        "InProcessByUser": {
-          "type": "cds.String",
-          "length": 256
-        },
-        "DraftIsProcessedByMe": {
-          "type": "cds.Boolean"
         }
       }
     },

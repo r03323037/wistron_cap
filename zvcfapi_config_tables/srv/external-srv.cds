@@ -1,7 +1,9 @@
 using { commtable as external } from './external/commtable';
 
-service get_hrdata {
+service HrService {
 
-    entity hrdatas as projection on external.HrDatas;
+    entity hrEmployee as projection on external.HrEmployee;
+    entity hrDepartment as projection on external.HrDepartment;
+    entity hrDepartCoHead as projection on external.HrDepartCoHead;
 
 }

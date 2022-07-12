@@ -38,7 +38,8 @@ public class GetApprovalListServiceHandler implements EventHandler {
         //Call HR data
 
 
-        //get Superior from HR
+        //get Superior 
+        //get Appliciant
         //Use Appliciant.Superior to call HR Data
 
         //Call Workflow config
