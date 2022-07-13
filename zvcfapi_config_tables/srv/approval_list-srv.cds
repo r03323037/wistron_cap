@@ -19,18 +19,7 @@ service GetApprovalListService{
                     supply_type : String(1);
                     payment_term : String(4);     
             }
-     //       company_purchase: Composition of many input.company_purchase
-     //           on company_purchase.parent = $self;
     }
-/*
-    aspect input.company_purchase {
-        key parent : Association to input;
-            company : String(4);
-            purchase_org : String(4);
-            supply_type : String(1);
-            payment_term : String(4);      
-    }
-*/
     entity approval_list as projection on vcf.approval_list;
    
 
