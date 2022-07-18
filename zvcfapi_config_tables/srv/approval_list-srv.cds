@@ -20,7 +20,53 @@ service GetApprovalListService{
                     payment_term : String(4);     
             }
     }
-    entity approval_list as projection on vcf.approval_list;
+
+    entity employee{
+        employee_id : String(11);
+        name        : String(50);
+        email       : String(50);
+    }
+
+    entity workflow1{
+        key application_id : String;
+        virtual applicant : Composition of one employee;
+        virtual supervisor: Composition of one employee;
+        virtual hq_fin    : Composition of one employee;
+        virtual hq_bu     : Composition of one employee;
+        virtual mro_managers: Composition of many employee;
+    }
+
+    entity approval_list{
+    key application_id : String;
+        virtual workflow1: Composition of one workflow1;
+        workflow2: Composition of many {
+            company_purchase   : Composition of many {
+                company        : String(4);
+                purchase_org   : String(4);
+            };
+            mm_core_user  {
+                employee_id : String(11);
+                name : String(50);
+                email : String(50);
+            };
+            am_manager    {
+                employee_id : String(11);
+                name        : String(50);
+                email       : String(50);
+            };
+            managers      : Composition of many {
+                seq         : Integer;
+                employee_id : String(11);
+                name        : String(50);
+                email       : String(50); 
+            };
+            site_fin      {
+                employee_id : String(11);
+                name        : String(50);
+                email       : String(50);
+            };
+        }
+}
    
 
 }

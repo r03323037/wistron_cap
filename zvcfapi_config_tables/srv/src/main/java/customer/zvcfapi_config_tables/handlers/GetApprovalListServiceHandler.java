@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import cds.gen.getapprovallistservice.*;
 //import cds.gen.vcf.*;
 import cds.gen.getapprovallistservice.Input.CompanyPurchase;
-import cds.gen.vcf.Employee;
 
 
 
@@ -34,29 +33,28 @@ public class GetApprovalListServiceHandler implements EventHandler {
         String Appliciant = context.getInput().getApplicant();
         List<CompanyPurchase> Site = context.getInput().getCompanyPurchase();
 
+
+        ApprovalList approvallist = ApprovalList.create();
+       // List<Workflow2> 
     //Get Approval List by input
         //Get Appliciant HR data
         //Call HR data
-        Employee workflow1Appliciant = Employee.create();
-        workflow1Appliciant.setEmployeeId("10910110");
-        workflow1Appliciant.setName("Anderson Tsai");
-        workflow1Appliciant.setEmail("Anderson_Tsai@wistron.com");
+
+
 
         //get Superior 
         //get Appliciant
         //Use Appliciant.Superior to call HR Data
-        Employee workflow1Supervisor = Employee.create();
-        workflow1Supervisor.setEmployeeId("10910110");
-        workflow1Supervisor.setName("Anderson Tsai");
-        workflow1Supervisor.setEmail("Anderson_Tsai@wistron.com"); 
+
+
 
     //Call Workflow config
         //1. HQ_BU -> Check by Vendor Account Group -> Get ID
-        Employee workflow1HqBu = Employee.create();
+        
 
         
         //2. HQ FIN -> get ID
-        Employee workflow1HqFin = Employee.create();
+        
         
         
         //3. MRO Manager -> Check MRO flag = Y -> Get ID by Pur_Org 
@@ -74,14 +72,33 @@ public class GetApprovalListServiceHandler implements EventHandler {
 
         //TBD add "AM manager" collumn to application UI -> Get HR data by input.AmManager
         
+        //List<Workflow2> 
 
         
     //Set return Approval List
-        ApprovalList approvallist = ApprovalList.create();
+        
         approvallist.setApplicationId(ApplicationID);
-        approvallist.setWorkflow1Applicant(workflow1Appliciant);
-        approvallist.setWorkflow1Supervisor(workflow1Supervisor);
-        approvallist.setWorkflow1HqBu(workflow1HqBu);
+
+        Workflow1 workflow1 = Workflow1.create();
+
+        Employee workflow1Applicant = Employee.create(); 
+        workflow1Applicant.setEmployeeId("10910110");
+        workflow1Applicant.setName("Anderson Tsai");
+        workflow1Applicant.setEmail("Anderson_Tsai@wistron.com");
+
+        workflow1.setApplicant( workflow1Applicant);
+
+        approvallist.setWorkflow1(workflow1);
+    //Workflow1-Appliciant
+   //     approvallist.setWorkflow1ApplicantEmployeeId("10910110");
+   //     approvallist.setWorkflow1ApplicantName("Anderson Tsai");
+   //     approvallist.setWorkflow1ApplicantEmail("Anderson_Tsai@wistron.com");
+    //Workflow1-Supervisor
+   //     approvallist.setWorkflow1SupervisorEmployeeId("10910110");
+   //     approvallist.setWorkflow1SupervisorName("Anderson Tsai");
+   //     approvallist.setWorkflow1SupervisorEmail("Anderson_Tsai@wistron.com");
+
+        //approvallist.setWorkflow1HqBu(workflow1HqBu);
         //approvallist.setWorkflow1MroManager(workflow1MroManager);
         //approvallist.setWorkflow1HqFin(workflow1HqFin);
         
