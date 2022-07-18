@@ -28,17 +28,21 @@ service GetApprovalListService{
     }
 
     entity workflow1{
-        key application_id : String;
+        application_id : String;
         virtual applicant : Composition of one employee;
         virtual supervisor: Composition of one employee;
         virtual hq_fin    : Composition of one employee;
         virtual hq_bu     : Composition of one employee;
-        virtual mro_managers: Composition of many employee;
     }
-
+    
     entity approval_list{
     key application_id : String;
         virtual workflow1: Composition of one workflow1;
+        mro_managers: Composition of many{
+            employee_id : String(11);
+            name        : String(50);
+            email       : String(50);
+        };
         workflow2: Composition of many {
             company_purchase   : Composition of many {
                 company        : String(4);

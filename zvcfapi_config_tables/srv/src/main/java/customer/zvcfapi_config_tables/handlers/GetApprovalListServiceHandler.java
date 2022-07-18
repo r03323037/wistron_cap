@@ -86,6 +86,7 @@ public class GetApprovalListServiceHandler implements EventHandler {
         workflow1Applicant.setName("Anderson Tsai");
         workflow1Applicant.setEmail("Anderson_Tsai@wistron.com");
 
+        workflow1.setApplicationId(ApplicationID);
         workflow1.setApplicant( workflow1Applicant);
 
         approvallist.setWorkflow1(workflow1);
