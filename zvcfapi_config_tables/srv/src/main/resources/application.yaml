@@ -4,3 +4,12 @@ spring:
 cds:
   datasource:
     auto-config.enabled: false
+---
+spring:
+  config.activate.on-profile: cloud
+cds:
+  remote.services:
+    HrService:
+      destination:
+        name: "CommTableService"
+        type: "odata-v2"
